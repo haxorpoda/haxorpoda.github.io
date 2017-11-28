@@ -1,1 +1,3 @@
-# haxorpoda.github.io
+# Haxorpoda Collective
+
+We come to crunch bugs.
