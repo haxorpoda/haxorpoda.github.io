@@ -12418,11 +12418,11 @@ var index_esm = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  components: {
-    TreeMap: __WEBPACK_IMPORTED_MODULE_1__treemap_vue__["a" /* default */],
-    MasonaryGrid: __WEBPACK_IMPORTED_MODULE_2__masonary_grid_vue__["a" /* default */]
-  },
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])([])
+	components: {
+		TreeMap: __WEBPACK_IMPORTED_MODULE_1__treemap_vue__["a" /* default */],
+		MasonaryGrid: __WEBPACK_IMPORTED_MODULE_2__masonary_grid_vue__["a" /* default */]
+	},
+	computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])([])
 });
 
 /***/ }),
@@ -22574,21 +22574,45 @@ var render = function() {
     [
       _c("div", { staticClass: "spacer" }),
       _vm._v(" "),
-      _c("img", {
-        staticClass: "logo",
-        attrs: { src: "img/haxorpoda.logo.png", alt: "  " }
-      }),
+      _vm._m(0),
       _vm._v(" "),
       _c("h1", [_vm._v("Haxorpoda Collective")]),
       _vm._v(" "),
       _c("masonary-grid"),
       _vm._v(" "),
-      _c("h2", [_vm._v("Reload to see more")])
+      _c("h2", [_vm._v("Reload to see more")]),
+      _vm._v(" "),
+      _vm._m(1)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "https://twitter.com/haxorpoda" } }, [
+      _c("img", {
+        staticClass: "logo",
+        attrs: {
+          src: "img/haxorpoda.logo.png",
+          alt: "Haxorpoda Collective logo"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", [
+      _c("a", { attrs: { href: "https://twitter.com/haxorpoda" } }, [
+        _vm._v("@haxorpoda")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
