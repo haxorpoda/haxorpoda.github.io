@@ -122,8 +122,8 @@ h1
 	color: #ccc
 	.size
 		opacity: 0.4
-		margin-bottom: 1em
 	.shuffle
+		margin-bottom: 1.5em
 		border: 1px solid #ccc
 		border-radius: 3px
 		width: 2em

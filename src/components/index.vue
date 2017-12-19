@@ -22,7 +22,7 @@ export default {
 	<h1>Haxorpoda Collective</h1>
 	<!-- <tree-map></tree-map> -->
 	<masonary-grid></masonary-grid>
-	<h2>Reload to see more</h2>
+	<h2>Ils vont à la chasse aux papillons.</h2>
 	<h3><a href="https://twitter.com/haxorpoda">@haxorpoda</a></h3>
 </div>
 </template>
