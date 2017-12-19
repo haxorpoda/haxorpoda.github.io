@@ -12536,11 +12536,28 @@ function drawTreemap(root) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-console.log("fileColors", __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]);
 
-function shuffle(array) {
+function shuffleArray(array) {
 	var currentIndex = array.length,
 	    temporaryValue,
 	    randomIndex;
@@ -12561,24 +12578,29 @@ function shuffle(array) {
 	data() {
 		return {
 			fileColors: __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */],
-			random: false
+			size: 1,
+			random0: Math.floor(Math.random() * 10 + 1),
+			random1: Math.floor(Math.random() * 10 + 1)
 		};
+	},
+	methods: {
+		shuffle() {
+			console.log('shuffle222222');
+			this.random0 = Math.floor(Math.random() * 10 + 1);
+			this.random1 = Math.floor(Math.random() * 10 + 1);
+		}
 	},
 	computed: {
 		fileColorShuffled() {
-			const sample = shuffle(__WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]).slice(0, 100);
-			const c = __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]; //.filter(({ colors }) => (colors.hls[1]>0.33)&&(colors.hls[2]>0.16))
-			const random = Math.floor(Math.random() * 10 + 1);
+			const sample = shuffleArray(__WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]).slice(0, 100);
 			// localStorage.haxrandom = localStorage.haxrandom !== undefined ? false : localStorage.haxrandom
-			if (random < 4) {
-				console.log('shuffle');
+			if (this.random0 < 4) {
 				return sample;
 			} else {
-				console.log('sort');
 				sample.sort(function (a, b) {
 					return parseFloat(a.colors.hls[0]) - parseFloat(b.colors.hls[0]);
 				});
-				if (Math.floor(Math.random() * 10 + 1) > 2) sample.reverse();
+				if (this.random1 > 2) sample.reverse();
 				return sample;
 			}
 		}
@@ -13287,7 +13309,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n  padding: 0;\n  margin: 0;\n}\n#gallery {\n  padding: 0 100px;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n#gallery > div {\n    width: 10em;\n    height: 20em;\n    background-position: center;\n    background-size: contain;\n    background-repeat: no-repeat;\n    margin: 40px;\n}\n", "", {"version":3,"sources":["/home/select/Dev/haxorpoda/haxorpoda.github.io/src/components/masonary.grid.vue"],"names":[],"mappings":";AAAA;EACE,WAAW;EACX,UAAU;CAAE;AAEd;EACE,iBAAiB;EACjB,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,wBAAwB;CAAE;AAC1B;IACE,YAAY;IACZ,aAAa;IACb,4BAA4B;IAC5B,yBAAyB;IACzB,6BAA6B;IAC7B,aAAa;CAAE","file":"masonary.grid.vue","sourcesContent":["html, body {\n  padding: 0;\n  margin: 0; }\n\n#gallery {\n  padding: 0 100px;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center; }\n  #gallery > div {\n    width: 10em;\n    height: 20em;\n    background-position: center;\n    background-size: contain;\n    background-repeat: no-repeat;\n    margin: 40px; }\n"],"sourceRoot":""}]);
+exports.push([module.i, "\nhtml, body {\n  padding: 0;\n  margin: 0;\n}\nh1 {\n  text-align: center;\n}\n#gallery {\n  padding: 0 10em;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n#gallery > div {\n    width: 10em;\n    height: 20em;\n    background-position: center;\n    background-size: contain;\n    background-repeat: no-repeat;\n    margin: 5em;\n}\n@media (max-width: 600px) {\n#gallery {\n    padding: 0;\n}\n}\n.controls {\n  position: fixed;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  top: 1em;\n  right: 1em;\n  color: #ccc;\n}\n.controls .size {\n    opacity: 0.4;\n    margin-bottom: 1em;\n}\n.controls .shuffle {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n    width: 2em;\n    height: 2em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n}\n", "", {"version":3,"sources":["/home/select/Dev/haxorpoda/haxorpoda.github.io/src/components/masonary.grid.vue"],"names":[],"mappings":";AAAA;EACE,WAAW;EACX,UAAU;CAAE;AAEd;EACE,mBAAmB;CAAE;AAEvB;EACE,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,wBAAwB;CAAE;AAC1B;IACE,YAAY;IACZ,aAAa;IACb,4BAA4B;IAC5B,yBAAyB;IACzB,6BAA6B;IAC7B,YAAY;CAAE;AAElB;AACE;IACE,WAAW;CAAE;CAAE;AAEnB;EACE,gBAAgB;EAChB,cAAc;EACd,uBAAuB;EACvB,sBAAsB;EACtB,SAAS;EACT,WAAW;EACX,YAAY;CAAE;AACd;IACE,aAAa;IACb,mBAAmB;CAAE;AACvB;IACE,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,YAAY;IACZ,cAAc;IACd,wBAAwB;IACxB,oBAAoB;IACpB,gBAAgB;CAAE","file":"masonary.grid.vue","sourcesContent":["html, body {\n  padding: 0;\n  margin: 0; }\n\nh1 {\n  text-align: center; }\n\n#gallery {\n  padding: 0 10em;\n  width: 100%;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center; }\n  #gallery > div {\n    width: 10em;\n    height: 20em;\n    background-position: center;\n    background-size: contain;\n    background-repeat: no-repeat;\n    margin: 5em; }\n\n@media (max-width: 600px) {\n  #gallery {\n    padding: 0; } }\n\n.controls {\n  position: fixed;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  top: 1em;\n  right: 1em;\n  color: #ccc; }\n  .controls .size {\n    opacity: 0.4;\n    margin-bottom: 1em; }\n  .controls .shuffle {\n    border: 1px solid #ccc;\n    border-radius: 3px;\n    width: 2em;\n    height: 2em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    cursor: pointer; }\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -22550,18 +22572,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "gallery" } },
-    _vm._l(_vm.fileColorShuffled.slice(0, 100), function(fileColor) {
-      return _c("div", {
-        style: {
-          backgroundImage:
-            "url(img/bugs-small-marked-bgremoved/" + fileColor.file + ")"
-        }
+  return _c("div", [
+    _c("div", { staticClass: "controls" }, [
+      _c("div", [
+        _vm._v("\n\t\t\t" + _vm._s(_vm.size) + "\n\t\t\t"),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.size,
+              expression: "size"
+            }
+          ],
+          staticClass: "size",
+          attrs: { type: "range", min: "0.3", max: "1.2", step: "0.01" },
+          domProps: { value: _vm.size },
+          on: {
+            __r: function($event) {
+              _vm.size = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "shuffle",
+          on: {
+            click: function($event) {
+              _vm.shuffle()
+            }
+          }
+        },
+        [_vm._v("S")]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { id: "gallery" } },
+      _vm._l(_vm.fileColorShuffled.slice(0, 100), function(fileColor) {
+        return _c("div", {
+          style: {
+            width: _vm.size * 10 + "em",
+            height: _vm.size * 20 + "em",
+            margin: _vm.size * 5 + "em",
+            backgroundImage:
+              "url(img/bugs-small-marked-bgremoved/" + fileColor.file + ")"
+          }
+        })
       })
-    })
-  )
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

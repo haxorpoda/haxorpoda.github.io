@@ -1,20 +1,37 @@
 <template>
-	 <div id="gallery">
-		<div
-			v-for="fileColor in fileColorShuffled.slice(0,100)"
-			:style="{
-				backgroundImage: `url(img/bugs-small-marked-bgremoved/${fileColor.file})`
-			}">
+	<div>
+		<div class="controls">
+			<div>
+				{{size}}
+				<input
+					class="size"
+					type="range"
+					min="0.3"
+					max="1.2"
+					step="0.01"
+					v-model="size">
+			</div>
+			<div class="shuffle" @click="shuffle()">S</div>
 		</div>
-		<!-- <img src="images/cat-2.jpg" alt="Serious cat"> -->
+		<div id="gallery">
+			<div
+				v-for="fileColor in fileColorShuffled.slice(0,100)"
+				:style="{
+					width: `${size*10}em`,
+					height: `${size*20}em`,
+					margin: `${size*5}em`,
+					backgroundImage: `url(img/bugs-small-marked-bgremoved/${fileColor.file})`
+				}">
+			</div>
+			<!-- <img src="images/cat-2.jpg" alt="Serious cat"> -->
+		</div>
 	</div>
 </template>
 
 <script>
-import { fileColors } from '../../data/colors.one.js'
-console.log("fileColors", fileColors);
+import { fileColors } from '../../data/colors.one.js';
 
-function shuffle(array) {
+function shuffleArray(array) {
 	var currentIndex = array.length, temporaryValue, randomIndex;
 	// While there remain elements to shuffle...
 	while (0 !== currentIndex) {
@@ -34,31 +51,33 @@ export default {
 	data() {
 		return {
 			fileColors,
-			random: false,
+			size: 1,
+			random0: Math.floor((Math.random() * 10) + 1),
+			random1: Math.floor((Math.random() * 10) + 1),
 		};
+	},
+	methods: {
+		shuffle() {
+			console.log('shuffle222222');
+			this.random0 = Math.floor((Math.random() * 10) + 1);
+			this.random1 = Math.floor((Math.random() * 10) + 1);
+		},
 	},
 	computed: {
 		fileColorShuffled() {
-			const sample = shuffle(fileColors).slice(0,100);
-			const c = fileColors;//.filter(({ colors }) => (colors.hls[1]>0.33)&&(colors.hls[2]>0.16))
-			const random = Math.floor((Math.random() * 10) + 1);
+			const sample = shuffleArray(fileColors).slice(0, 100);
 			// localStorage.haxrandom = localStorage.haxrandom !== undefined ? false : localStorage.haxrandom
-			if (random < 4) {
-				console.log('shuffle');
+			if (this.random0 < 4) {
 				return sample;
 			} else {
-				console.log('sort');
 				sample.sort(function(a, b) {
 					return parseFloat(a.colors.hls[0]) - parseFloat(b.colors.hls[0]);
 				});
-				if (Math.floor((Math.random() * 10) + 1) > 2) sample.reverse();
+				if (this.random1 > 2) sample.reverse();
 				return sample;
 			}
-
-
-
-		}
-	}
+		},
+	},
 };
 
 // const galleryEl = document.querySelector('#gallery');
@@ -71,9 +90,12 @@ export default {
 html, body
 	padding: 0
 	margin: 0
+h1
+	text-align: center
+
 
 #gallery
-	padding: 0 100px
+	padding: 0 10em
 	width: 100%
 	display: flex
 	flex-wrap: wrap
@@ -84,6 +106,30 @@ html, body
 		background-position: center
 		background-size: contain
 		background-repeat: no-repeat
-		margin: 40px
+		margin: 5em
 
+@media (max-width: 600px)
+	#gallery
+		padding: 0
+
+.controls
+	position: fixed
+	display: flex
+	flex-direction: column
+	align-items: flex-end
+	top: 1em
+	right: 1em
+	color: #ccc
+	.size
+		opacity: 0.4
+		margin-bottom: 1em
+	.shuffle
+		border: 1px solid #ccc
+		border-radius: 3px
+		width: 2em
+		height: 2em
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
 </style>
