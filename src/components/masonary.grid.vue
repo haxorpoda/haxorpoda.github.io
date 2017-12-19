@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<div class="controls">
+			<div class="shuffle" @click="shuffle()">S</div>
 			<div>
 				{{size}}
 				<input
@@ -11,7 +12,6 @@
 					step="0.01"
 					v-model="size">
 			</div>
-			<div class="shuffle" @click="shuffle()">S</div>
 		</div>
 		<div id="gallery">
 			<div
@@ -95,7 +95,7 @@ h1
 
 
 #gallery
-	padding: 0 10em
+	padding: 1em
 	width: 100%
 	display: flex
 	flex-wrap: wrap
@@ -108,16 +108,16 @@ h1
 		background-repeat: no-repeat
 		margin: 5em
 
-@media (max-width: 600px)
-	#gallery
-		padding: 0
+// @media (max-width: 600px)
+// 	#gallery
+// 		padding: 0
 
 .controls
 	position: fixed
 	display: flex
 	flex-direction: column
 	align-items: flex-end
-	top: 1em
+	bottom: 1em
 	right: 1em
 	color: #ccc
 	.size
