@@ -1,12 +1,12 @@
 <template>
 	 <div id="gallery">
-	 	<div
-	 		v-for="fileColor in fileColorShuffled.slice(0,100)"
-	 		:style="{
-	 			backgroundImage: `url(img/bugs-small-marked-bgremoved/${fileColor.file})`
-	 		}">
-	 	</div>
-	 	<!-- <img src="images/cat-2.jpg" alt="Serious cat"> -->
+		<div
+			v-for="fileColor in fileColorShuffled.slice(0,100)"
+			:style="{
+				backgroundImage: `url(img/bugs-small-marked-bgremoved/${fileColor.file})`
+			}">
+		</div>
+		<!-- <img src="images/cat-2.jpg" alt="Serious cat"> -->
 	</div>
 </template>
 
@@ -29,15 +29,34 @@ function shuffle(array) {
 	return array;
 }
 
+
 export default {
 	data() {
 		return {
-			fileColors: fileColors,
-		}
+			fileColors,
+			random: false,
+		};
 	},
 	computed: {
 		fileColorShuffled() {
-			return shuffle(fileColors)
+			const sample = shuffle(fileColors).slice(0,100);
+			const c = fileColors;//.filter(({ colors }) => (colors.hls[1]>0.33)&&(colors.hls[2]>0.16))
+			const random = Math.floor((Math.random() * 10) + 1);
+			// localStorage.haxrandom = localStorage.haxrandom !== undefined ? false : localStorage.haxrandom
+			if (random < 4) {
+				console.log('shuffle');
+				return sample;
+			} else {
+				console.log('sort');
+				sample.sort(function(a, b) {
+					return parseFloat(a.colors.hls[0]) - parseFloat(b.colors.hls[0]);
+				});
+				if (Math.floor((Math.random() * 10) + 1) > 2) sample.reverse();
+				return sample;
+			}
+
+
+
 		}
 	}
 };

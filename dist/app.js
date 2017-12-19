@@ -12560,12 +12560,27 @@ function shuffle(array) {
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
 		return {
-			fileColors: __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]
+			fileColors: __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */],
+			random: false
 		};
 	},
 	computed: {
 		fileColorShuffled() {
-			return shuffle(__WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]);
+			const sample = shuffle(__WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]).slice(0, 100);
+			const c = __WEBPACK_IMPORTED_MODULE_0__data_colors_one_js__["a" /* fileColors */]; //.filter(({ colors }) => (colors.hls[1]>0.33)&&(colors.hls[2]>0.16))
+			const random = Math.floor(Math.random() * 10 + 1);
+			// localStorage.haxrandom = localStorage.haxrandom !== undefined ? false : localStorage.haxrandom
+			if (random < 4) {
+				console.log('shuffle');
+				return sample;
+			} else {
+				console.log('sort');
+				sample.sort(function (a, b) {
+					return parseFloat(a.colors.hls[0]) - parseFloat(b.colors.hls[0]);
+				});
+				if (Math.floor(Math.random() * 10 + 1) > 2) sample.reverse();
+				return sample;
+			}
 		}
 	}
 });
